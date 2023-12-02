@@ -24,7 +24,7 @@ for line in f:
             if first == None:
                 first = ch
             last = ch
-    resA += int(first+last)
+    p1 += int(first+last)
 
     first, last = None, None
     for ch in parsed:
@@ -32,7 +32,7 @@ for line in f:
             if first == None:
                 first = ch
             last = ch
-    resB += int(first+last)
+    p2 += int(first+last)
 
 print("a", p1)
 print("b", p2)
