@@ -15,7 +15,6 @@ for i, line in enumerate(lines):
         newlines += bonus[i] 
     p1 += 2**(m-1) if m else 0
 
-p2 = p1
 print(p1)
 print(newlines + len(lines))
 
