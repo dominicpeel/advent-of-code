@@ -1,0 +1,5 @@
+/home/dominic/programming/advent-of-code/2023/rust/target/debug/build/proc-macro2-63a384ee6a076951/build_script_build-63a384ee6a076951: /home/dominic/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro2-1.0.70/build.rs
+
+/home/dominic/programming/advent-of-code/2023/rust/target/debug/build/proc-macro2-63a384ee6a076951/build_script_build-63a384ee6a076951.d: /home/dominic/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro2-1.0.70/build.rs
+
+/home/dominic/.cargo/registry/src/index.crates.io-6f17d22bba15001f/proc-macro2-1.0.70/build.rs:
