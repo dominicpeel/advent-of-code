@@ -9,3 +9,4 @@ fn main() {
     let args = Args::parse();
     println!("Day {}!", args.day);
 }
+
