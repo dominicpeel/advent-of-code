@@ -6,18 +6,15 @@ strength = "A, K, Q, J, T, 9, 8, 7, 6, 5, 4, 3, 2, *".split(", ")[::-1]
 
 def get_type(hand):
     counts = Counter(hand)
-    jokers = counts.pop("*", 0)
+    jokers = counts["*"]
     if jokers < 5:
         max_card = max(counts, key=counts.get)
         counts[max_card] += jokers
-    else:
-        return 0
 
     entropy = 0
     for card in set(hand):
-        if card == "*":
-            card = max_card
-        p = counts[card]/len(hand)
+        if card == "*": continue
+        p = counts[max_card] / len(hand)
         entropy -= p*math.log(p)
 
     return -entropy # lower entropy = higher rank
