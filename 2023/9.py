@@ -1,4 +1,4 @@
-lines = [list(map(int, line.strip().split(" "))) for line in open("inp8").readlines()]
+lines = [list(map(int, line.strip().split(" "))) for line in open("inp9").readlines()]
 
 p1 = p2 = 0
 for line in lines:
