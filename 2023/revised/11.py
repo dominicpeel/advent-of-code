@@ -11,6 +11,11 @@ for i, row in enumerate(grid):
             clear_cols.discard(j)
             galaxies.add((i,j))
 
+c = 0
+row_expansions = [c := (c+1) if row in clear_rows else c for row in range(len(grid))]
+c = 0
+col_expansions = [c := (c+1) if col in clear_cols else c for col in range(len(grid[0]))]
+
 manhattan = lambda a,b : abs(a[0]-b[0])+abs(a[1]-b[1])
 
 galaxies = list(galaxies)
@@ -20,11 +25,8 @@ for a in range(len(galaxies)):
     for b in range(a+1, len(galaxies)):
         bi, bj = galaxies[b]
 
-        row_expansions = sum(row in clear_rows for row in range(*sorted((ai, bi))))
-        col_expansions = sum(col in clear_cols for col in range(*sorted((aj, bj))))
-
-        p1 += row_expansions + col_expansions + manhattan(galaxies[a], galaxies[b])
-        p2 += (1000000-1)*(row_expansions + col_expansions) + manhattan(galaxies[a], galaxies[b])
+        p1 += abs(row_expansions[bi] - row_expansions[ai]) + abs(col_expansions[bj]-col_expansions[aj]) + manhattan(galaxies[a], galaxies[b])
+        p2 += (1000000-1) * (abs(row_expansions[bi] - row_expansions[ai]) + abs(col_expansions[bj]-col_expansions[aj])) + manhattan(galaxies[a], galaxies[b])
 
 print(p1)
 print(p2)
