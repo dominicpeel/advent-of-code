@@ -14,7 +14,7 @@ for workflow in inp_workflows:
             workflows[key].append(["True", condition[0]])
 
 p1 = 0
-x = m = a = s = 0
+x=m=a=s=0
 for part in parts:
     for cat in part[1:-1].split(","):
         exec(cat)
