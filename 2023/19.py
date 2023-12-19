@@ -31,17 +31,33 @@ for part in parts:
 print(p1)
 
 p2 = 0
-def dfs(curr, x=(1,4000), m=(1,4000), a=(1,4000), s=(1,4000)):
+xmas = {k:v for v,k in enumerate("xmas")}
+def dfs(curr, rs=[[1,4000], [1,4000], [1,4000], [1,4000]]):
+    rs = [[a,b] for a,b in rs]
     global p2
-    if workflow in ("A", "R"):
-        p2 += (x[1]-x[0])*(m[1]-m[0])*(a[1]-a[0])*(s[1]-s[0]) if workflow == "A" else 0
+    if curr in ("A", "R"):
+        res = 1
+        for a,b in rs:
+            res *= b-a+1
+        p2 += res if curr == "A" else 0
+        return 
 
     for condition, key in workflows[curr][:-1]:
-        print(condition[0])
+        cat, val = condition.replace(">","<").split("<")
+        index = xmas[cat]
+        a,b = rs[index]
+        symbol = condition[1]
+        if symbol == "<":
+            rs[index] =  [a,int(val)-1]
+            dfs(key, rs)
+            rs[index] = [int(val),b]
+        else:
+            rs[index] = [int(val)+1, b]
+            dfs(key, rs)
+            rs[index] = [a, int(val)]
 
-    # otherwise condition
-    # dfs(workflows[curr][-1][-1])
-
+    dfs(workflows[curr][-1][-1], rs)
 
 dfs("in")
+print(p2)
 
