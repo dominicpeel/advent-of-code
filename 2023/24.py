@@ -33,3 +33,23 @@ for i in range(len(hailstones)):
 
 print(p1)
 
+# Part 2
+import sympy
+# p2x + T*p2vx = Px - T*Vx
+p = sympy.symbols("px, py, pz")
+v = sympy.symbols("vx, vy, vz")
+
+eqs = []
+for i, (pos, vel) in enumerate(hailstones):
+    t = sympy.symbols(f"t{i}")
+    for j in range(3):
+        eqs.append(p[j] + t*v[j] - pos[j] + t*vel[j])
+    
+    if i < 5:
+        continue
+    solutions = [solution for solution in sympy.solve(eqs)]
+    if len(solutions) == 1:
+        break
+
+print(sum(solutions[0][p[i]] for i in range(3)))
+
